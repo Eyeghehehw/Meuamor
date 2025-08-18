@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Greguinho & Bia 💜</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Arial', sans-serif;
+      background: linear-gradient(180deg, #0d0d0d, #1a0033);
+      color: #fff;
+      overflow-x: hidden;
+    }
+    /* MENU */
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: #1a0033;
+      color: #fff;
+      padding: 15px;
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      z-index: 1000;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.5);
+    }
+    nav a {
+      color: #ff66cc;
+      text-decoration: none;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+    nav a:hover { color: #ff99ff; }
+
+    section {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 80px 20px;
+      text-align: center;
+    }
+
+    h1, h2 { color: #ff99ff; }
+
+    /* CONTADOR */
+    #contador {
+      font-size: 1.8rem;
+      margin-top: 20px;
+      color: #fff;
+      text-shadow: 0 0 10px #ff33cc;
+    }
+
+    /* CARROSSEL */
+    .carousel {
+      position: relative;
+      width: 80%;
+      max-width: 600px;
+      overflow: hidden;
+      border-radius: 20px;
+      box-shadow: 0 0 20px #ff33cc;
+    }
+    .slides {
+      display: flex;
+      transition: transform 0.8s ease-in-out;
+    }
+    .slides img {
+      width: 100%;
+      border-radius: 20px;
+    }
+    .carousel button {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(0,0,0,0.5);
+      border: none;
+      color: #fff;
+      padding: 10px;
+      cursor: pointer;
+      border-radius: 50%;
+    }
+    .prev { left: 10px; }
+    .next { right: 10px; }
+
+    /* MENSAGEM */
+    .mensagem {
+      max-width: 600px;
+      font-size: 1.2rem;
+      line-height: 1.6;
+      background: rgba(255, 51, 204, 0.1);
+      padding: 20px;
+      border-radius: 20px;
+      box-shadow: 0 0 15px #660066;
+    }
+
+    /* MÚSICA */
+    #player {
+      margin-top: 20px;
+    }
+    #player button {
+      background: #ff33cc;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 20px;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    #player button:hover { background: #cc0099; }
+  </style>
+</head>
+<body>
+  <!-- MENU -->
+  <nav>
+    <a href="#inicio">Início</a>
+    <a href="#fotos">Fotos</a>
+    <a href="#mensagem">Mensagem</a>
+    <a href="#contador-section">Contador</a>
+  </nav>
+
+  <!-- INÍCIO -->
+  <section id="inicio">
+    <h1>💜 Greguinho & Bia 💜</h1>
+    <p>Nosso cantinho especial com amor, memórias e muito Kuromi 🎀</p>
+    <div id="player">
+      <button onclick="togglePlay()">▶️ Play / ⏸️ Pause</button>
+    </div>
+    <audio id="musica" loop>
+      <source src="see_you_again.mp3" type="audio/mpeg">
+    </audio>
+  </section>
+
+  <!-- FOTOS -->
+  <section id="fotos">
+    <h2>Nossas Fotos 📸</h2>
+    <div class="carousel">
+      <div class="slides" id="slides">
+        <img src="euebia1.png" alt="foto1">
+        <img src="euebia2.png" alt="foto2">
+        <img src="euebia3.png" alt="foto3">
+        <!-- Adicione mais fotos aqui se quiser -->
+        <!-- <img src="euebia4.png" alt="foto4"> -->
+      </div>
+      <button class="prev" onclick="mudarSlide(-1)">❮</button>
+      <button class="next" onclick="mudarSlide(1)">❯</button>
+    </div>
+  </section>
+
+  <!-- MENSAGEM -->
+  <section id="mensagem">
+    <h2>Mensagem 💌</h2>
+    <div class="mensagem">
+      <p><strong>Minha estrela,</strong></p>
+      <p>Estava aqui pensando em nós Né e não tem como não sorrir ksksksk Você é essa mistura perfeita de paz e intensidade, que me desmonta e me reconstrói todo dia meu amorzinho.</p>
+      <p>Estar com você transforma o simples em especial. Seja numa conversa boba ou num silêncio tudo com você tem mais cor, mais alma.</p>
+      <p>Se eu tivesse que escolher alguém pra viver tudo de novo, não pensava duas vezes: era você, de novo e sempre. Obrigado por ser a melhor namorada do mundo.</p>
+      <p><em>Greguinho seu maior amor</em></p>
+    </div>
+  </section>
+
+  <!-- CONTADOR -->
+  <section id="contador-section">
+    <h2>⏳ Tempo Juntos</h2>
+    <div id="contador"></div>
+  </section>
+
+  <script>
+    // CONTADOR
+    const inicio = new Date("2024-02-24T00:35:00");
+    const contador = document.getElementById("contador");
+
+    function atualizarContador() {
+      const agora = new Date();
+      const diferenca = agora - inicio;
+
+      const dias = Math.floor(diferenca / (1000*60*60*24));
+      const horas = Math.floor((diferenca / (1000*60*60)) % 24);
+      const minutos = Math.floor((diferenca / (1000*60)) % 60);
+      const segundos = Math.floor((diferenca / 1000) % 60);
+
+      contador.innerHTML = `${dias} dias, ${horas}h ${minutos}m ${segundos}s 💖`;
+    }
+    setInterval(atualizarContador, 1000);
+    atualizarContador();
+
+    // CARROSSEL
+    let slideIndex = 0;
+    const slides = document.getElementById("slides");
+    const totalSlides = slides.children.length;
+
+    function mudarSlide(n) {
+      slideIndex = (slideIndex + n + totalSlides) % totalSlides;
+      slides.style.transform = `translateX(${-slideIndex * 100}%)`;
+    }
+
+    // MÚSICA
+    const musica = document.getElementById("musica");
+    let tocando = false;
+    function togglePlay() {
+      if (tocando) {
+        musica.pause();
+      } else {
+        musica.play();
+      }
+      tocando = !tocando;
+    }
+  </script>
+</body>
+</html>
