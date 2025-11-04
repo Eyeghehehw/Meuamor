@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Gabriel & Yara 💜</title>
+  <title>Gabriel & Yara</title>
   <style>
     body {
       margin: 0;
@@ -229,12 +229,12 @@
   <!-- INÍCIO -->
   <section id="inicio">
     <h1 class="neon-text">Gabriel & Yara</h1>
-    <p>Onde o rock encontra o amor 💜</p>
+    <p>Onde o rock encontra o amor</p>
     <div id="player">
       <button onclick="togglePlay()">🎸 Tocar Música</button>
     </div>
     <audio id="musica" loop>
-      <!-- Música hospedada no GitHub -->
+      <!-- Música com o nome correto -->
       <source src="musica.mp3" type="audio/mpeg">
       Seu navegador não suporta o elemento de áudio.
     </audio>
@@ -245,13 +245,13 @@
     <h2>Nós Dois</h2>
     <div class="fotos-container">
       <div class="foto-item">
-        <!-- Foto da Yara -->
-        <img src="foto-yara.jpg" alt="Yara">
+        <!-- Foto da Yara com nome correto -->
+        <img src="foto-dela.jpg" alt="Yara">
         <div class="foto-legenda">Yara</div>
       </div>
       <div class="foto-item">
-        <!-- Foto do Gabriel -->
-        <img src="foto-gabriel.jpg" alt="Gabriel">
+        <!-- Foto do Gabriel com nome correto -->
+        <img src="sua-foto.jpg" alt="Gabriel">
         <div class="foto-legenda">Gabriel</div>
       </div>
     </div>
@@ -298,38 +298,15 @@
         const string = document.createElement('div');
         string.classList.add('guitar-string');
         string.style.top = `${(i + 1) * 15}%`;
-        
-        // Adicionar animação
         string.style.animation = `pulse ${2 + i * 0.5}s infinite alternate`;
         stringsContainer.appendChild(string);
       }
     }
     
-    // EFEITO DE DIGITAÇÃO
-    function typeWriter(element, text, speed = 50) {
-      let i = 0;
-      element.innerHTML = '';
-      
-      function typing() {
-        if (i < text.length) {
-          element.innerHTML += text.charAt(i);
-          i++;
-          setTimeout(typing, speed);
-        }
-      }
-      
-      typing();
-    }
-    
     // INICIALIZAR
     document.addEventListener('DOMContentLoaded', function() {
       criarCordas();
-      
-      // Aplicar efeito de digitação ao título
-      const titulo = document.querySelector('#inicio h1');
-      const textoOriginal = titulo.textContent;
-      typeWriter(titulo, textoOriginal, 100);
     });
   </script>
 </body>
-</html>
+  </html>
