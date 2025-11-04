@@ -1,481 +1,294 @@
-<!DOCTYPE html><html lang="pt-BR">
+<!DOCTYPE html>
+<html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Gabriel & Yara</title>
-  <meta name="description" content="Onde o rock encontra o amor — o site oficial de Gabriel & Yara." />
-  <meta name="theme-color" content="#ff0064" />
-  <meta property="og:title" content="Gabriel & Yara" />
-  <meta property="og:description" content="Onde o rock encontra o amor." />
-  <meta property="og:type" content="website" />
-  <meta property="og:image" content="capa.jpg" />
   <style>
-    :root {
-      --bg1: #1a1a1a;
-      --bg2: #2d1b69;
-      --accent: #ff0064;
-      --accent-2: #cc0050;
-      --text: #ffffff;
-      --muted: rgba(255,255,255,.75);
-      --card: rgba(0,0,0,.55);
-      --glass: rgba(255,255,255,.06);
-      --shadow: 0 10px 30px rgba(0,0,0,.35);
-    }/* Modo Claro */
-.light {
-  --bg1: #f6f7fb;
-  --bg2: #ead9ff;
-  --text: #1b1030;
-  --muted: rgba(27,16,48,.75);
-  --card: rgba(255,255,255,.8);
-  --glass: rgba(27,16,48,.06);
-  --shadow: 0 10px 30px rgba(27,16,48,.2);
-}
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #1a1a1a 0%, #2d1b69 100%);
+      color: #fff;
+      overflow-x: hidden;
+      scroll-behavior: smooth;
+    }
 
-* { box-sizing: border-box; }
-html { scroll-behavior: smooth; }
-body {
-  margin: 0;
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  color: var(--text);
-  background: linear-gradient(135deg, var(--bg1) 0%, var(--bg2) 100%);
-  background-attachment: fixed;
-  overflow-x: hidden;
-}
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: rgba(0, 0, 0, 0.9);
+      color: #fff;
+      padding: 15px;
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      z-index: 1000;
+      box-shadow: 0 2px 10px rgba(255, 0, 100, 0.3);
+      border-bottom: 2px solid #ff0064;
+    }
 
-/* Utilidades */
-.container { width: min(1100px, 92vw); margin: 0 auto; }
-.btn { background: var(--accent); border: 0; color: #fff; padding: 12px 22px; border-radius: 999px; font-weight: 700; letter-spacing: .5px; cursor: pointer; transition: .25s transform, .25s box-shadow, .25s background; box-shadow: 0 0 0 rgba(0,0,0,0); }
-.btn:hover { background: var(--accent-2); transform: translateY(-2px); box-shadow: 0 8px 20px rgba(255,0,100,.35); }
-.chip { display:inline-flex; align-items:center; gap:8px; border:1px solid var(--glass); background: var(--card); padding: 6px 12px; border-radius:999px; font-size:.85rem; color: var(--muted); }
-.card { background: var(--card); border: 1px solid var(--glass); border-radius: 16px; box-shadow: var(--shadow); }
-.shadow-neon { box-shadow: 0 0 20px rgba(255,0,100,.35); }
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: bold;
+      transition: 0.3s;
+      padding: 5px 15px;
+      border-radius: 20px;
+      text-transform: uppercase;
+      font-size: 14px;
+      letter-spacing: 1px;
+    }
 
-/* Navbar */
-nav { position: sticky; top: 0; z-index: 1000; backdrop-filter: blur(6px); background: rgba(0,0,0,.5); border-bottom: 2px solid var(--accent); }
-.nav-inner { display:flex; align-items:center; justify-content:space-between; padding: 12px 16px; }
-.brand { display:flex; align-items:center; gap:10px; font-weight:800; letter-spacing:1px; text-transform: uppercase; }
-.brand .logo { width: 28px; height: 28px; border-radius: 50%; background: radial-gradient(circle at 30% 30%, #fff, var(--accent) 50%, transparent 60%); box-shadow: 0 0 20px rgba(255,0,100,.6); }
-.nav-links { display:flex; gap: 20px; flex-wrap: wrap; }
-.nav-links a { color:#fff; text-decoration:none; font-weight:700; font-size:.9rem; padding: 8px 14px; border-radius: 999px; transition:.25s; }
-.nav-links a.active, .nav-links a:hover { color: var(--accent); text-shadow: 0 0 10px var(--accent); }
-.nav-ctas { display:flex; gap:8px; align-items:center; }
-.toggle { background: transparent; border: 1px solid var(--glass); color: var(--text); border-radius: 999px; padding: 8px 12px; cursor:pointer; }
+    nav a:hover {
+      color: #ff0064;
+      text-shadow: 0 0 10px #ff0064;
+    }
 
-/* Hero */
-header { min-height: 100svh; display:grid; place-items:center; text-align:center; position: relative; overflow:hidden; }
-header .content { padding: 120px 0 80px; }
-.title { font-size: clamp(2rem, 3vw + 1rem, 3.5rem); margin: 0 0 6px; letter-spacing: 2px; text-transform: uppercase; color: var(--accent); text-shadow: 0 0 12px rgba(255,0,100,.6); }
-.subtitle { margin: 0 0 20px; color: var(--muted); font-size: 1.1rem; }
+    section {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 80px 20px;
+      text-align: center;
+    }
 
-/* Player */
-#player { margin-top: 10px; display:flex; gap:10px; justify-content:center; flex-wrap:wrap; }
-#player .time { font-variant-numeric: tabular-nums; color: var(--muted); }
-input[type="range"] { width: min(420px, 80vw); accent-color: var(--accent); }
+    h1, h2 {
+      color: #ff0064;
+      margin-bottom: 20px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      text-shadow: 0 0 10px rgba(255, 0, 100, 0.5);
+    }
 
-/* Cordas / decoração */
-.guitar-strings { pointer-events:none; position:absolute; inset:0; z-index:-1; }
-.guitar-string { position:absolute; left:0; width:100%; height:1px; background: linear-gradient(90deg, transparent, var(--accent), transparent); opacity:.35; }
+    .fotos-container {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      flex-wrap: wrap;
+      margin: 30px 0;
+    }
 
-/* Seções base */
-section { padding: 80px 0; }
-h2.section-title { color: var(--accent); text-transform: uppercase; letter-spacing:2px; text-align:center; margin: 0 0 18px; text-shadow: 0 0 12px rgba(255,0,100,.4); }
-p.lead { text-align:center; color: var(--muted); margin: 0 auto 30px; width: min(800px, 90%); }
+    .foto-item {
+      text-align: center;
+      max-width: 300px;
+    }
 
-/* Nós dois */
-.fotos-grid { display:grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 26px; }
-.foto-item { overflow:hidden; border-radius: 16px; border: 2px solid var(--accent); position:relative; }
-.foto-item img { width: 100%; height: 320px; object-fit: cover; display:block; transition: transform .35s ease; }
-.foto-item:hover img { transform: scale(1.05) rotate(-.6deg); }
-.foto-legenda { position:absolute; left: 12px; bottom: 12px; background: rgba(0,0,0,.5); padding: 6px 10px; border-radius: 999px; font-weight: 800; letter-spacing:.5px; color:#fff; border:1px solid var(--glass); }
+    .foto-item img {
+      width: 100%;
+      height: 300px;
+      object-fit: cover;
+      border-radius: 10px;
+      border: 3px solid #ff0064;
+      box-shadow: 0 0 20px rgba(255, 0, 100, 0.5);
+      transition: transform 0.3s;
+    }
 
-/* Mensagem */
-.mensagem { max-width: 850px; margin: 0 auto; padding: 26px; border: 1px solid var(--glass); border-radius: 16px; background: var(--card); line-height: 1.8; }
-.mensagem p { margin: 0 0 12px; }
+    .foto-item img:hover {
+      transform: scale(1.05) rotate(-1deg);
+      box-shadow: 0 0 30px rgba(255, 0, 100, 0.8);
+    }
 
-/* Linha do tempo */
-.timeline { position:relative; margin: 30px auto; padding-left: 22px; max-width: 900px; }
-.timeline:before { content:""; position:absolute; left: 14px; top: 0; bottom: 0; width: 2px; background: linear-gradient(var(--accent), transparent); opacity:.7; }
-.tl-item { position: relative; padding: 10px 10px 10px 30px; margin: 8px 0; }
-.tl-item:before { content:""; position:absolute; left: 7px; top: 16px; width: 14px; height: 14px; border-radius: 50%; border:2px solid var(--accent); background: #000; box-shadow: 0 0 8px rgba(255,0,100,.6); }
-.tl-card { padding: 14px 16px; border-radius: 14px; border:1px solid var(--glass); background: var(--card); }
-.tl-meta { font-size: .85rem; color: var(--muted); margin-bottom: 6px; }
+    .foto-legenda {
+      margin-top: 15px;
+      font-weight: bold;
+      color: #ff0064;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
 
-/* Galeria com Lightbox */
-.gallery-grid { display:grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 14px; }
-.gallery-grid img { width: 100%; height: 190px; object-fit: cover; border-radius: 12px; border:1px solid var(--glass); cursor: zoom-in; transition: transform .25s; }
-.gallery-grid img:hover { transform: scale(1.02); }
-.lightbox { position: fixed; inset: 0; background: rgba(0,0,0,.85); display:none; align-items:center; justify-content:center; z-index: 2000; }
-.lightbox.open { display:flex; }
-.lightbox img { max-width: 92vw; max-height: 80vh; border-radius: 12px; border: 2px solid var(--accent); box-shadow: 0 0 30px rgba(255,0,100,.5); }
+    .mensagem {
+      max-width: 700px;
+      font-size: 1.1rem;
+      line-height: 1.7;
+      background: rgba(0, 0, 0, 0.7);
+      padding: 30px;
+      border-radius: 10px;
+      border: 2px solid #ff0064;
+      box-shadow: 0 0 20px rgba(255, 0, 100, 0.3);
+      text-align: left;
+    }
 
-/* Contagem regressiva */
-.countdown { display:flex; gap: 14px; justify-content:center; flex-wrap:wrap; margin-top: 8px; }
-.cd-box { min-width: 110px; text-align:center; padding: 14px; border-radius: 14px; border:1px solid var(--glass); background: var(--card); }
-.cd-box .num { font-size: 1.8rem; font-weight: 900; }
-.cd-box .lbl { color: var(--muted); font-size: .85rem; }
+    .mensagem p {
+      margin-bottom: 15px;
+    }
 
-/* Contato */
-form { display:grid; gap: 10px; width: min(620px, 92%); margin: 0 auto; }
-input, textarea { width: 100%; padding: 12px 14px; border-radius: 12px; border:1px solid var(--glass); background: var(--card); color: var(--text); }
-textarea { min-height: 120px; resize: vertical; }
+    #player {
+      margin-top: 20px;
+    }
 
-/* Voltar ao topo */
-#toTop { position: fixed; right: 16px; bottom: 16px; display:none; }
+    #player button {
+      background: #ff0064;
+      border: none;
+      padding: 12px 25px;
+      border-radius: 30px;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.3s;
+      box-shadow: 0 0 15px rgba(255, 0, 100, 0.5);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
 
-/* Acessibilidade / Respostas */
-@media (max-width: 768px) {
-  .fotos-grid { grid-template-columns: 1fr; }
-  header .content { padding-top: 96px; }
-}
-@media (prefers-reduced-motion: reduce) {
-  * { animation-duration: .001ms !important; animation-iteration-count: 1 !important; transition-duration: 0ms !important; scroll-behavior: auto !important; }
-}
+    #player button:hover {
+      background: #cc0050;
+      transform: translateY(-2px);
+      box-shadow: 0 0 20px rgba(255, 0, 100, 0.7);
+    }
 
+    .guitar-strings {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    .guitar-string {
+      position: absolute;
+      width: 100%;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, #ff0064, transparent);
+      opacity: 0.3;
+    }
+
+    .neon-text {
+      color: #fff;
+      text-shadow:
+        0 0 5px #fff,
+        0 0 10px #fff,
+        0 0 20px #ff0064,
+        0 0 30px #ff0064,
+        0 0 40px #ff0064;
+      animation: neon-flicker 2s infinite alternate;
+    }
+
+    @keyframes neon-flicker {
+      0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
+        text-shadow:
+          0 0 5px #fff,
+          0 0 10px #fff,
+          0 0 20px #ff0064,
+          0 0 30px #ff0064,
+          0 0 40px #ff0064;
+      }
+      20%, 24%, 55% {
+        text-shadow: none;
+      }
+    }
+
+    @media (max-width: 768px) {
+      nav {
+        gap: 15px;
+        padding: 10px;
+      }
+
+      nav a {
+        padding: 5px 10px;
+        font-size: 12px;
+      }
+
+      h1 {
+        font-size: 1.8rem;
+      }
+
+      .fotos-container {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .mensagem {
+        padding: 20px;
+        font-size: 1rem;
+      }
+    }
   </style>
 </head>
 <body>
-  <!-- Navegação -->
-  <nav aria-label="Principal">
-    <div class="nav-inner container">
-      <div class="brand" aria-label="Gabriel e Yara">
-        <div class="logo" aria-hidden="true"></div>
-        <span>Gabriel & Yara</span>
-      </div>
-      <div class="nav-links" id="navLinks">
-        <a href="#inicio">Início</a>
-        <a href="#nos">Nós</a>
-        <a href="#mensagem">Mensagem</a>
-        <a href="#historia">Nossa História</a>
-        <a href="#galeria">Galeria</a>
-        <a href="#contagem">Contagem</a>
-        <a href="#contato">Contato</a>
-      </div>
-      <div class="nav-ctas">
-        <button id="themeToggle" class="toggle" aria-pressed="false" title="Alternar tema">🌓 Tema</button>
-      </div>
+  <nav>
+    <a href="#inicio">Início</a>
+    <a href="#fotos">Nós</a>
+    <a href="#mensagem">Mensagem</a>
+  </nav>
+
+  <div class="guitar-strings" id="guitar-strings"></div>
+
+  <section id="inicio">
+    <h1 class="neon-text">Gabriel & Yara</h1>
+    <p>Onde o rock encontra o amor</p>
+    <div id="player">
+      <button onclick="togglePlay()">🎸 Tocar Música</button>
     </div>
-  </nav>  <!-- Hero / Início -->  <header id="inicio">
-    <div class="guitar-strings" id="guitar-strings" aria-hidden="true"></div>
-    <div class="container content">
-      <h1 class="title" id="titulo">Gabriel & Yara</h1>
-      <p class="subtitle">Onde o rock encontra o amor</p><!-- Player -->
-  <div id="player">
-    <button class="btn" id="playBtn">🎸 Tocar Música</button>
-    <span class="time" id="tempo">00:00</span>
-    <input type="range" id="seek" min="0" value="0" step="1" aria-label="Barra de progresso" />
-    <button class="toggle" id="muteBtn" aria-pressed="false">🔊</button>
-  </div>
+    <audio id="musica" loop>
+      <source src="Childish Gambino - Me And Your Mama (shortened version)(MP3_160K).mp3" type="audio/mpeg">
+      Seu navegador não suporta o elemento de áudio.
+    </audio>
+  </section>
 
-  <audio id="musica" preload="metadata" loop>
-    <!-- Substitua pelo seu arquivo: certifique-se que o nome e extensão estão corretos -->
-    <source src="musica.mp3" type="audio/mpeg">
-    Seu navegador não suporta o elemento de áudio.
-  </audio>
-
-  <div style="margin-top:16px; display:flex; gap:10px; justify-content:center; flex-wrap:wrap;">
-    <span class="chip">❤ Feito com amor e distorção</span>
-    <span class="chip">⚡ Neon vibes</span>
-    <span class="chip">📱 100% responsivo</span>
-  </div>
-</div>
-
-  </header>  <!-- Nós dois -->  <section id="nos" aria-labelledby="nos-title">
-    <div class="container">
-      <h2 class="section-title" id="nos-title">Nós dois</h2>
-      <p class="lead">Algumas fotos favoritas, com a energia que a gente ama.</p>
-      <div class="fotos-grid">
-        <figure class="foto-item card">
-          <!-- Troque pelo arquivo real -->
-          <img src="foto-dela.jpg" alt="Yara sorrindo" loading="lazy" />
-          <figcaption class="foto-legenda">Yara</figcaption>
-        </figure>
-        <figure class="foto-item card">
-          <!-- Troque pelo arquivo real -->
-          <img src="sua-foto.jpg" alt="Gabriel tocando guitarra" loading="lazy" />
-          <figcaption class="foto-legenda">Gabriel</figcaption>
-        </figure>
+  <section id="fotos">
+    <h2>Nós Dois</h2>
+    <div class="fotos-container">
+      <div class="foto-item">
+        <img src="foto-dela.jpg" alt="Yara">
+        <div class="foto-legenda">Yara</div>
+      </div>
+      <div class="foto-item">
+        <img src="sua-foto.jpg" alt="Gabriel">
+        <div class="foto-legenda">Gabriel</div>
       </div>
     </div>
-  </section>  <!-- Mensagem -->  <section id="mensagem" aria-labelledby="msg-title">
-    <div class="container">
-      <h2 class="section-title" id="msg-title">Para Minha Yara</h2>
-      <article class="mensagem card">
-        <p><strong>Minha rockeira favorita,</strong></p>
-        <p>Você é como o riff perfeito que nunca sai da minha cabeça — marcante, intenso e cheio de personalidade. Cada momento ao seu lado é como um solo de guitarra que arrepia a alma.</p>
-        <p>Nossa conexão é mais forte que a batida mais pesada do metal, mais doce que a melodia mais suave do rock clássico. Você trouxe cor e som para minha vida quando eu nem sabia que estava no silêncio.</p>
-        <p>Obrigado por ser minha parceira nesse show chamado vida. Que nossa música nunca pare de tocar, mesmo quando as baterias pararem e as guitarras se calarem.</p>
-        <p><em>Com todo o amor do mundo,</em></p>
-        <p><strong>Seu Gabriel</strong></p>
-        <details style="margin-top:10px;">
-          <summary class="chip">Clique para revelar uma mensagem surpresa 💌</summary>
-          <p style="margin-top:10px">Prometo te aplaudir nos dias bons e te segurar nos dias difíceis. Nosso palco é a vida — e o nosso show favorito é estar juntos.</p>
-        </details>
-      </article>
-    </div>
-  </section>  <!-- Nossa história (Timeline) -->  <section id="historia" aria-labelledby="hist-title">
-    <div class="container">
-      <h2 class="section-title" id="hist-title">Nossa História</h2>
-      <p class="lead">Momentos que afinam nossa melodia.</p>
-      <div class="timeline">
-        <div class="tl-item">
-          <div class="tl-card">
-            <div class="tl-meta">12 jan 2024 · Primeiro acorde</div>
-            <div>O dia em que nossas frequências se encontraram.</div>
-          </div>
-        </div>
-        <div class="tl-item">
-          <div class="tl-card">
-            <div class="tl-meta">28 mar 2024 · Nosso show</div>
-            <div>Fomos ao primeiro show juntos e cantamos até a voz falhar.</div>
-          </div>
-        </div>
-        <div class="tl-item">
-          <div class="tl-card">
-            <div class="tl-meta">05 jul 2024 · Foto que virou capa</div>
-            <div>Essa virou a arte oficial do nosso álbum: a vida a dois.</div>
-          </div>
-        </div>
-        <div class="tl-item">
-          <div class="tl-card">
-            <div class="tl-meta">(Edite aqui) · Próximo capítulo</div>
-            <div>O melhor ainda está por vir — adiciona novos marcos quando quiser.</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>  <!-- Galeria com Lightbox -->  <section id="galeria" aria-labelledby="gal-title">
-    <div class="container">
-      <h2 class="section-title" id="gal-title">Galeria</h2>
-      <p class="lead">Clique para ver em tela cheia.</p>
-      <div class="gallery-grid" id="gallery">
-        <!-- Substitua as imagens abaixo pelos seus arquivos -->
-        <img src="galeria1.jpg" alt="Nós dois 1" loading="lazy" />
-        <img src="galeria2.jpg" alt="Nós dois 2" loading="lazy" />
-        <img src="galeria3.jpg" alt="Nós dois 3" loading="lazy" />
-        <img src="galeria4.jpg" alt="Nós dois 4" loading="lazy" />
-        <img src="galeria5.jpg" alt="Nós dois 5" loading="lazy" />
-        <img src="galeria6.jpg" alt="Nós dois 6" loading="lazy" />
-      </div>
-    </div>
-    <div class="lightbox" id="lightbox" aria-modal="true" role="dialog">
-      <img id="lightboxImg" alt="Foto ampliada" />
-    </div>
-  </section>  <!-- Contagem regressiva -->  <section id="contagem" aria-labelledby="count-title">
-    <div class="container">
-      <h2 class="section-title" id="count-title">Contagem para o nosso dia</h2>
-      <p class="lead">Até o próximo marco (edite a data no código 👇)</p>
-      <div class="countdown" id="countdown">
-        <div class="cd-box"><div class="num" id="cd-d">00</div><div class="lbl">dias</div></div>
-        <div class="cd-box"><div class="num" id="cd-h">00</div><div class="lbl">horas</div></div>
-        <div class="cd-box"><div class="num" id="cd-m">00</div><div class="lbl">minutos</div></div>
-        <div class="cd-box"><div class="num" id="cd-s">00</div><div class="lbl">segundos</div></div>
-      </div>
-    </div>
-  </section>  <!-- Contato -->  <section id="contato" aria-labelledby="cont-title">
-    <div class="container">
-      <h2 class="section-title" id="cont-title">Contato</h2>
-      <p class="lead">Mande uma mensagem pra gente 💬</p>
-      <form class="card" onsubmit="enviarMensagem(event)">
-        <input type="text" id="nome" placeholder="Seu nome" aria-label="Seu nome" required />
-        <input type="email" id="email" placeholder="Seu e-mail" aria-label="Seu e-mail" required />
-        <textarea id="msg" placeholder="Sua mensagem" aria-label="Sua mensagem" required></textarea>
-        <div style="display:flex; gap:8px; align-items:center;">
-          <button type="submit" class="btn">Enviar</button>
-          <small id="status" aria-live="polite" style="color:var(--muted)"></small>
-        </div>
-      </form>
-    </div>
-  </section><button id="toTop" class="btn" aria-label="Voltar ao topo">⬆</button>
+  </section>
 
-  <footer style="text-align:center; padding: 30px 0; color: var(--muted);">
-    <div class="container">© <span id="ano"></span> Gabriel & Yara — com amor, neon e rock 🎸</div>
-  </footer>  <script>
-    // ==============================
-    // Utilidades
-    // ==============================
-    const $ = (sel, scope = document) => scope.querySelector(sel);
-    const $$ = (sel, scope = document) => [...scope.querySelectorAll(sel)];
+  <section id="mensagem">
+    <h2>Para Minha Yara</h2>
+    <div class="mensagem">
+      <p><strong>Minha rockeira favorita,</strong></p>
+      <p>Você é como o riff perfeito que nunca sai da minha cabeça - marcante, intenso e cheio de personalidade. Cada momento ao seu lado é como um solo de guitarra que arrepia a alma.</p>
+      <p>Nossa conexão é mais forte que a batida mais pesada do metal, mais doce que a melodia mais suave do rock clássico. Você trouxe cor e som para minha vida quando eu nem sabia que estava no silêncio.</p>
+      <p>Obrigado por ser minha parceira nesse show chamado vida. Que nossa música nunca pare de tocar, mesmo quando as baterias pararem e as guitarras se calarem.</p>
+      <p><em>Com todo o amor do mundo,</em></p>
+      <p><strong>Seu Gabriel</strong></p>
+    </div>
+  </section>
 
-    // ==============================
-    // Título com efeito de digitação
-    // ==============================
-    (function typewriter(){
-      const el = $('#titulo');
-      const texto = 'Gabriel & Yara';
-      el.textContent = '';
-      let i = 0;
-      const tick = () => {
-        el.textContent += texto.charAt(i);
-        i++;
-        if (i < texto.length) setTimeout(tick, 120);
-      };
-      tick();
-    })();
-
-    // ==============================
-    // Cordas de guitarra (decor)
-    // ==============================
-    (function createStrings(){
-      const wrap = $('#guitar-strings');
-      const n = 6;
-      for (let i = 0; i < n; i++) {
-        const d = document.createElement('div');
-        d.className = 'guitar-string';
-        d.style.top = `${(i+1) * 14}%`;
-        d.style.animation = `pulse ${2 + i * .5}s infinite alternate`;
-        wrap.appendChild(d);
-      }
-    })();
-
-    // (pequena animação via CSS inject)
-    const style = document.createElement('style');
-    style.textContent = `@keyframes pulse { from{opacity:.15} to{opacity:.45} }`;
-    document.head.appendChild(style);
-
-    // ==============================
-    // Player de Áudio avançado
-    // ==============================
-    const musica = $('#musica');
-    const playBtn = $('#playBtn');
-    const muteBtn = $('#muteBtn');
-    const tempo = $('#tempo');
-    const seek = $('#seek');
+  <script>
+    const musica = document.getElementById("musica");
     let tocando = false;
 
-    playBtn.addEventListener('click', async () => {
-      if (!tocando) {
-        try {
-          await musica.play();
-          playBtn.textContent = '⏸️ Pausar Música';
-          tocando = true;
-        } catch (e) {
-          alert('A música não pôde ser carregada. Verifique se o arquivo "musica.mp3" está junto do HTML.');
-        }
-      } else {
+    function togglePlay() {
+      if (tocando) {
         musica.pause();
-        playBtn.textContent = '🎸 Tocar Música';
-        tocando = false;
+        document.querySelector('#player button').textContent = '🎸 Tocar Música';
+      } else {
+        musica.currentTime = 20; // começa do segundo 20
+        musica.play().catch(e => {
+          console.log('Erro ao reproduzir música:', e);
+          alert('A música não pôde ser carregada. Verifique se o arquivo está correto.');
+        });
+        document.querySelector('#player button').textContent = '⏸️ Pausar Música';
       }
-    });
-
-    muteBtn.addEventListener('click', () => {
-      musica.muted = !musica.muted;
-      muteBtn.textContent = musica.muted ? '🔇' : '🔊';
-      muteBtn.setAttribute('aria-pressed', String(musica.muted));
-    });
-
-    musica.addEventListener('loadedmetadata', () => {
-      seek.max = Math.floor(musica.duration || 0);
-    });
-
-    musica.addEventListener('timeupdate', () => {
-      seek.value = Math.floor(musica.currentTime);
-      tempo.textContent = formatTime(musica.currentTime);
-    });
-
-    seek.addEventListener('input', () => {
-      musica.currentTime = Number(seek.value);
-    });
-
-    function formatTime(s) {
-      const m = Math.floor(s / 60).toString().padStart(2, '0');
-      const r = Math.floor(s % 60).toString().padStart(2, '0');
-      return `${m}:${r}`;
+      tocando = !tocando;
     }
 
-    // ==============================
-    // Lightbox da galeria
-    // ==============================
-    const lightbox = $('#lightbox');
-    const lightboxImg = $('#lightboxImg');
-    $$('#gallery img').forEach(img => {
-      img.addEventListener('click', () => {
-        lightboxImg.src = img.src;
-        lightbox.classList.add('open');
-      });
-    });
-    lightbox.addEventListener('click', () => lightbox.classList.remove('open'));
-
-    // ==============================
-    // Countdown
-    // ==============================
-    const targetDate = new Date('2026-01-12T00:00:00'); // <-- EDITE AQUI!
-    const cdD = $('#cd-d'), cdH = $('#cd-h'), cdM = $('#cd-m'), cdS = $('#cd-s');
-    function updateCountdown(){
-      const now = new Date();
-      const diff = Math.max(0, targetDate - now);
-      const s = Math.floor(diff / 1000);
-      const d = Math.floor(s / 86400);
-      const h = Math.floor((s % 86400) / 3600);
-      const m = Math.floor((s % 3600) / 60);
-      const ss = s % 60;
-      cdD.textContent = String(d).padStart(2,'0');
-      cdH.textContent = String(h).padStart(2,'0');
-      cdM.textContent = String(m).padStart(2,'0');
-      cdS.textContent = String(ss).padStart(2,'0');
-    }
-    updateCountdown();
-    setInterval(updateCountdown, 1000);
-
-    // ==============================
-    // Formulário (abre e-mail)
-    // ==============================
-    function enviarMensagem(e){
-      e.preventDefault();
-      const nome = $('#nome').value.trim();
-      const email = $('#email').value.trim();
-      const msg = $('#msg').value.trim();
-      if(!nome || !email || !msg){ return; }
-      const assunto = encodeURIComponent(`Mensagem do site — ${nome}`);
-      const corpo = encodeURIComponent(`De: ${nome} <${email}>\n\n${msg}`);
-      window.location.href = `mailto:seuemail@exemplo.com?subject=${assunto}&body=${corpo}`;
-      $('#status').textContent = 'Abrindo seu app de e-mail…';
-      setTimeout(()=> $('#status').textContent = '', 3000);
+    function criarCordas() {
+      const stringsContainer = document.getElementById('guitar-strings');
+      const numStrings = 6;
+      for (let i = 0; i < numStrings; i++) {
+        const string = document.createElement('div');
+        string.classList.add('guitar-string');
+        string.style.top = `${(i + 1) * 15}%`;
+        string.style.animation = `pulse ${2 + i * 0.5}s infinite alternate`;
+        stringsContainer.appendChild(string);
+      }
     }
 
-    // ==============================
-    // Scroll spy (destaca link ativo)
-    // ==============================
-    const links = $$('#navLinks a');
-    const sections = links.map(a => document.querySelector(a.getAttribute('href')));
-    const spy = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        const id = '#' + entry.target.id;
-        const link = links.find(a => a.getAttribute('href') === id);
-        if (entry.isIntersecting) {
-          links.forEach(a => a.classList.remove('active'));
-          if (link) link.classList.add('active');
-        }
-      });
-    }, { rootMargin: '-40% 0px -55% 0px', threshold: 0.01 });
-    sections.forEach(sec => spy.observe(sec));
-
-    // ==============================
-    // Botão voltar ao topo
-    // ==============================
-    const toTop = $('#toTop');
-    window.addEventListener('scroll', () => {
-      toTop.style.display = window.scrollY > 600 ? 'block' : 'none';
-    });
-    toTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
-
-    // ==============================
-    // Tema claro/escuro (salva no localStorage)
-    // ==============================
-    const themeToggle = $('#themeToggle');
-    const applyTheme = t => document.body.classList.toggle('light', t === 'light');
-    const current = localStorage.getItem('theme') || 'dark';
-    applyTheme(current);
-    themeToggle.addEventListener('click', () => {
-      const now = document.body.classList.contains('light') ? 'dark' : 'light';
-      applyTheme(now);
-      localStorage.setItem('theme', now);
-      themeToggle.setAttribute('aria-pressed', String(now === 'light'));
-    });
-
-    // ==============================
-    // Ano automático no rodapé
-    // ==============================
-    $('#ano').textContent = new Date().getFullYear();
-  </script></body>
+    document.addEventListener('DOMContentLoaded', criarCordas);
+  </script>
+</body>
 </html>
