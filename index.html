@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Rock & Amor</title>
+  <title>Gabriel & Yara 💜</title>
   <style>
     body {
       margin: 0;
@@ -80,6 +80,8 @@
     
     .foto-item img {
       width: 100%;
+      height: 300px;
+      object-fit: cover;
       border-radius: 10px;
       border: 3px solid #ff0064;
       box-shadow: 0 0 20px rgba(255, 0, 100, 0.5);
@@ -226,15 +228,14 @@
 
   <!-- INÍCIO -->
   <section id="inicio">
-    <h1 class="neon-text">Rock & Amor</h1>
-    <p>Onde a paixão pela música encontra o amor</p>
+    <h1 class="neon-text">Gabriel & Yara</h1>
+    <p>Onde o rock encontra o amor 💜</p>
     <div id="player">
       <button onclick="togglePlay()">🎸 Tocar Música</button>
     </div>
     <audio id="musica" loop>
       <!-- Música hospedada no GitHub -->
       <source src="musica.mp3" type="audio/mpeg">
-      <source src="musica.ogg" type="audio/ogg">
       Seu navegador não suporta o elemento de áudio.
     </audio>
   </section>
@@ -244,28 +245,28 @@
     <h2>Nós Dois</h2>
     <div class="fotos-container">
       <div class="foto-item">
-        <!-- Foto dela hospedada no GitHub -->
-        <img src="foto-dela.jpg" alt="Ela">
-        <div class="foto-legenda">Ela</div>
+        <!-- Foto da Yara -->
+        <img src="foto-yara.jpg" alt="Yara">
+        <div class="foto-legenda">Yara</div>
       </div>
       <div class="foto-item">
-        <!-- Sua foto hospedada no GitHub -->
-        <img src="sua-foto.jpg" alt="Eu">
-        <div class="foto-legenda">Eu</div>
+        <!-- Foto do Gabriel -->
+        <img src="foto-gabriel.jpg" alt="Gabriel">
+        <div class="foto-legenda">Gabriel</div>
       </div>
     </div>
   </section>
 
   <!-- MENSAGEM -->
   <section id="mensagem">
-    <h2>Minha Mensagem</h2>
+    <h2>Para Minha Yara</h2>
     <div class="mensagem">
-      <p><strong>Para a pessoa mais incrível do mundo,</strong></p>
-      <p>Você é como a batida perfeita de uma música - quando você entra na minha vida, tudo faz sentido. Cada momento ao seu lado é como um riff de guitarra que ecoa na minha alma.</p>
-      <p>Nossa conexão é mais forte que o som mais alto de um amplificador, mais intensa que o solo mais emocionante. Você trouxe harmonia para minha vida quando eu nem sabia que estava em desacordo.</p>
-      <p>Obrigado por ser minha parceira nesse palco chamado vida. Que nossa música nunca pare de tocar.</p>
-      <p><em>Com todo o meu amor,</em></p>
-      <p><strong>Seu rockeiro de plantão</strong></p>
+      <p><strong>Minha rockeira favorita,</strong></p>
+      <p>Você é como o riff perfeito que nunca sai da minha cabeça - marcante, intenso e cheio de personalidade. Cada momento ao seu lado é como um solo de guitarra que arrepia a alma.</p>
+      <p>Nossa conexão é mais forte que a batida mais pesada do metal, mais doce que a melodia mais suave do rock clássico. Você trouxe cor e som para minha vida quando eu nem sabia que estava no silêncio.</p>
+      <p>Obrigado por ser minha parceira nesse show chamado vida. Que nossa música nunca pare de tocar, mesmo quando as baterias pararem e as guitarras se calarem.</p>
+      <p><em>Com todo o amor do mundo,</em></p>
+      <p><strong>Seu Gabriel</strong></p>
     </div>
   </section>
 
@@ -328,15 +329,6 @@
       const titulo = document.querySelector('#inicio h1');
       const textoOriginal = titulo.textContent;
       typeWriter(titulo, textoOriginal, 100);
-      
-      // Verificar se as imagens carregaram
-      const imagens = document.querySelectorAll('img');
-      imagens.forEach(img => {
-        img.onerror = function() {
-          console.log(`Erro ao carregar imagem: ${img.src}`);
-          this.alt = 'Imagem não carregada';
-        };
-      });
     });
   </script>
 </body>
